@@ -1,0 +1,31 @@
+$def with (form1,files,titles,help)
+
+<hrml>
+<div id="container" style="width:2000px">
+<div id="figures" style="background-color:#FFD700;width:1300px;float:left;">
+         
+<form name="main" method="post"> 
+$if not form1.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form1.render()
+ </form>
+
+$for i in range(len(files)):
+    <br> <h2> ${titles[i]} </h2> <br>
+     <img alt="${files[i]}" src="./${files[i]}"  width="550" height="300" />
+
+</div>
+
+
+
+
+
+<div id="content" style="background-color:#EEEEEE;width:700px;float:left;">
+<pre><code>
+ $:help
+</code></pre>
+<br>
+</div>
+
+</div>
+</hrml>
+

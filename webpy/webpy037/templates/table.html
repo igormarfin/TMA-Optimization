@@ -1,0 +1,77 @@
+$def with (form,results,help)
+
+
+$code:
+  def sizes (results):
+      locallen=0
+      gridlen=0
+      for prog in results:
+         if prog[len(prog)-1] == "local" : locallen=locallen+1
+         if prog[len(prog)-1] == "grid" :  gridlen=gridlen+1
+      return (locallen,gridlen)
+      
+
+
+
+<html>
+
+
+
+
+
+<body>
+
+<div id="container" style="width:1100px">
+
+
+<div id="table" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main"  method="post" style=" margin-left: 2em" > 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+<input type="submit" />    </form>
+
+
+
+<h2  style=" margin-left: 2em"  > Summary on MVA training </h2>
+$if len(results)>0: 
+     <p  style=" margin-left: 2em"> The total number of entries: ${len(results)} </p>
+     <p  style="color:red; margin-left: 2em"> The local number of entries: ${sizes(results)[0]} </p>
+     <p  style="color:green; margin-left: 2em"> The grid number of entries: ${sizes(results)[1]} </p>
+<table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+$if len(results):
+     <tr>
+        <td> ID </td> <td> Separation </td> <td> Probability of KS for Signal </td> <td> Probability of KS for Background </td> <td> KS of Signal/Background </td>
+     <tr>
+
+$for prog  in results:
+     $if  len(prog)>0:         
+            <tr>
+             $for i in range(len(prog)-1):
+                  $if prog[len(prog)-1] == "local" :
+                      <td bgcolor="red"> ${prog[i]}  </td>
+                  $if prog[len(prog)-1] == "grid" :
+                      <td bgcolor="green"> ${prog[i]}  </td>
+            
+           </tr>
+
+
+</table>
+
+
+
+</div>
+
+<div id="help" style="background-color:#EEEEEE;width:250px;float:left;">
+
+$:help
+</div>
+
+
+</div>
+
+</body>
+
+</html>
+

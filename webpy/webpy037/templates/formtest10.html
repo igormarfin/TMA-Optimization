@@ -1,0 +1,49 @@
+$def with (form,results,files,title)
+
+
+<html>
+
+
+<body>
+
+<div id="container" style="width:1500px">
+<div id="table" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main"  method="post" style=" margin-left: 2em" > 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+</form>
+
+
+
+<h2  style=" margin-left: 2em"  > Test of overtraining </h2>
+<table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+      <tr>
+         <td> ID </td> <td>  Train separation </td>  <td> Test separation </td>
+      </tr>
+$for var  in results:
+            <tr>
+                      <td bgcolor="red"> <b> $var[0] </b>  </td>
+                      <td bgcolor="green"> <b> $var[1]  </b> </td>           
+                      <td bgcolor="blue"> <b> $var[2]  </b> </td>           
+           </tr>
+
+</table>
+
+</div>
+
+<div id="help" style="background-color:#EEEEEE;width:650px;float:left;">
+$for i in range(len(files)):
+         <p> <b> ID:  $title[i] </b> </p>
+         <img alt="$files[i]" src="./$files[i]"  width="650" height="400" />
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
+

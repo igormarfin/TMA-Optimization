@@ -1,0 +1,32 @@
+$def with (form,progress,progress2,script)
+
+<html>
+
+$if len(progress)>0:
+  <head>
+    <meta http-equiv="refresh" content="2">
+  </head>
+
+
+<body>
+
+   
+<form name="main" method="post"> 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+<input type="submit" />    </form>
+
+<h3> $:progress2  </h3>
+
+$for prog  in progress:
+     <pre>
+     $prog
+	 </pre>
+     <br>
+
+
+$:script
+
+</body>
+
+</html>

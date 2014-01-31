@@ -1,0 +1,40 @@
+$def with (form,text,help)
+
+
+<html>
+
+
+<body>
+
+<div id="container" style="width:1500px">
+<div id="table" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main"  method="post" style=" margin-left: 2em" > 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+</form>
+
+
+
+<h2  style=" margin-left: 2em"  > $text </h2>
+
+</div>
+
+<div id="help" style="background-color:#EEEEEE;width:650px;float:left;">
+
+
+     <pre>
+     $:help
+     </pre>
+
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
+

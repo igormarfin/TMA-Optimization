@@ -1,0 +1,64 @@
+$def with (form,status,progress,script)
+
+<html>
+
+
+
+$if len(progress)>0:
+  <head>
+    <meta http-equiv="refresh" content="2">
+  </head>
+
+
+
+
+<body>
+
+
+<div id="container" style="width:1300px">
+<div id="figures" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main" method="post"> 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+<input type="submit" />    </form>
+
+$for prog  in progress:
+     <pre>
+     $prog
+     </pre>
+     <br>
+
+
+</div>
+
+<div id="content" style="background-color:#EEEEEE;width:300px;float:left;">
+<b> Current status</b> <br> <br>
+
+<table cellpadding="4" style="border: 1px solid #000000; border-collapse: collapse;" border="1">
+
+
+$for stat in status:
+     $if len(stat)>0:
+         <tr>
+         $var mystat=stat.split()
+         $for item in self.mystat
+              <td> $item </td>	
+         </tr>
+</table>
+
+
+
+</div>
+
+
+</div>
+
+$:script
+
+
+
+</body>
+
+</html>

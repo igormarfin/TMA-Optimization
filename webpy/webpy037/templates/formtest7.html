@@ -1,0 +1,63 @@
+$def with (form,results,files,title)
+
+$code:
+  def bestKS (results):
+      if (len(results)>0):      return results[0][1]
+      else: return 0
+
+  def averageKS (results):
+      if (len(results)>0):   
+       mysum=0
+       for x in results: mysum+=x[1]
+       return mysum/len(results)
+      else: return 0
+
+<html>
+
+
+<body>
+
+<div id="container" style="width:1500px">
+<div id="table" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main"  method="post" style=" margin-left: 2em" > 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+</form>
+
+
+
+<h2  style=" margin-left: 2em"  > Summary on the KS for the mode $title </h2>
+$if len(results)>0: 
+     <p  style=" margin-left: 2em"> The total number of variables: ${len(results)} </p>
+     <p  style="color:red; margin-left: 2em"> The best KS : ${bestKS(results)} </p>
+     <p  style="color:green; margin-left: 2em"> The average KS: ${averageKS(results)} </p>
+     <table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+      <tr>
+         <td> Variable </td> <td>  KS distance </td> 
+      <tr>
+     $for var  in results:
+            <tr>
+                      <td bgcolor="red"> <b> $var[0] </b>  </td>
+                      <td bgcolor="green"> <b> $var[1]  </b> </td>           
+           </tr>
+
+
+      </table>
+
+</div>
+
+<div id="help" style="background-color:#EEEEEE;width:650px;float:left;">
+$for file in files:
+         <img alt="$file" src="./$file"  width="650" height="400" />
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,32 @@
+
+$def with (form1,form2,files,titles,help)
+<hrml>
+<div id="container" style="width:2000px">
+<div id="figures" style="background-color:#FFD700;width:1000px;float:left;">
+         
+<form name="main" method="post"> 
+$if not form1.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form1.render()
+$:form2.render()
+<input type="submit" /> 
+ </form>
+
+$for i in range(len(files)):
+     <p> ${titles[i]} <p> <br>
+     ids=${files[i]}     
+     $for j in range(len(ids)):
+          picts=${ids[j]}
+          $for pict in picts:
+               <img alt="${pict}.png" src="./static/${pict}.png"  width="500" height="300" />
+</div>
+
+<div id="content" style="background-color:#EEEEEE;width:1000px;float:left;">
+<h1> Help on meaning the types of plots</h1>
+<pre><code>
+ $:{help[i]}
+</code></pre>
+<br>
+</div>
+
+</hrml>
+

@@ -1,0 +1,94 @@
+$def with (form,results1,results2,results3,files,title)
+
+$code:
+  def averageKS (results):
+      if (len(results)>0):   
+       mysum=0
+       for x in results: mysum+=x[1]
+       return mysum/len(results)
+      else: return 0
+
+<html>
+
+
+<body>
+
+<div id="container" style="width:1500px">
+<div id="table" style="background-color:#FFD700;width:850px;float:left;">
+
+   
+<form name="main"  method="post" style=" margin-left: 2em" > 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+</form>
+
+
+
+<h2  style=" margin-left: 2em"  > Summary on the KS for the mode $title </h2>
+<p  style=" margin-left: 2em; color:red"> The total number of variables of 1st rank: ${len(results1)} </p>
+<p  style=" margin-left: 2em; color:blue"> The total number of variables of 2nd rank: ${len(results2)} </p>
+<p  style=" margin-left: 2em; color:green"> The total number of variables of 3rd rank: ${len(results3)} </p>
+<p  style="color:black; margin-left: 2em"> <b> The average KS of 1st rank: ${averageKS(results1)} </b></p>
+<p  style="color:black; margin-left: 2em"> <b> The average KS of 2nd rank: ${averageKS(results2)} </b></p>
+<p  style="color:black; margin-left: 2em"> <b> The average KS of 3rd rank: ${averageKS(results3)} </b></p>
+
+<h3  style=" margin-left: 2em"  > 1st rank variables </h3>
+<table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+<tr>
+<td> Variable </td> <td>  KS distance </td> 
+</tr>
+$for var  in results1:
+    <tr>
+    <td bgcolor="red"> <b> $var[0] </b>  </td>
+    <td bgcolor="green"> <b> $var[1]  </b> </td>           
+    </tr>
+
+
+</table>
+
+
+<h3  style=" margin-left: 2em"  > 2nd rank variables </h3>
+<table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+<tr>
+<td> Variable </td> <td>  KS distance </td> 
+</tr>
+$for var  in results2:
+     <tr>
+     <td bgcolor="red"> <b> $var[0] </b>  </td>
+     <td bgcolor="green"> <b> $var[1]  </b> </td>           
+     </tr>
+
+
+</table>
+
+<h3  style=" margin-left: 2em"  > 3rd rank variables </h3>
+<table cellpadding="4" style=" margin-left: 2em;border: 1px solid #000000; border-collapse: collapse;" border="1">
+<tr>
+<td> Variable </td> <td>  KS distance </td> 
+</tr>
+ $for var  in results3:
+      <tr>
+      <td bgcolor="red"> <b> $var[0] </b>  </td>
+      <td bgcolor="green"> <b> $var[1]  </b> </td>           
+     </tr>
+
+
+</table>
+
+
+
+</div>
+
+<div id="help" style="background-color:#EEEEEE;width:650px;float:left;">
+$for file in files:
+     <img alt="$file" src="./$file"  width="650" height="400" />
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
+

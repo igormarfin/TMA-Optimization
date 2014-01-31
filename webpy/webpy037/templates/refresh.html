@@ -1,0 +1,48 @@
+$def with (form)
+
+<html>
+<!doctype html>
+<head>
+<meta http-equiv="refresh" content="3">
+</head>
+<body>
+
+
+
+
+<h3>  Hello </h3>
+
+<pre><code>
+
+
+$:form
+
+
+</code></pre>
+
+
+<script type = "text/javascript" >
+
+    var x;
+    function autoscroll(){
+    self.scrollBy(0,x)
+    }
+
+    function playautoscroll(){
+    x = 1;
+    setInterval('autoscroll()',0.1);
+    stop();}
+
+    function onetozero(){
+    x=0;
+    }
+
+    function stop(){
+    setTimeout ("onetozero()",6000);
+    }
+    window.onload=playautoscroll
+
+    </script>
+
+</body>
+</html>

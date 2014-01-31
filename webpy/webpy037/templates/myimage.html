@@ -1,0 +1,5 @@
+$def with (type,id,mva)
+
+$if not type or not id or not mva:  <p class="error">Try again, AmeriCAN:</p>
+$else: <html>      <img alt="${type}_${mva}_${id}.png" src="./static/${type}_${mva}_${id}.png" /> </html>
+

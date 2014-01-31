@@ -1,0 +1,27 @@
+$def with (form,picts,help_title,help_content)
+<hrml>         
+<div id="container" style="width:2000px">
+
+<div id="figures" style="background-color:#FFD700;width:1000px;float:left;">
+<form name="main" method="post"> 
+$if not form.valid: <p class="error">Try again, AmeriCAN:</p>
+$:form.render()
+<input type="submit" />    
+</form>
+$for pict in picts:
+    <img alt="${pict}.png" src="./static/${pict}.png"  width="1000" height="700" />
+
+</div>
+<div id="content" style="background-color:#EEEEEE;width:1000px;float:left;">
+<h1> Help on meaning the variables</h1>
+$for i in range(len(help_title)):
+      <b> ${help_title[i]} </b><br>
+      <pre><code>
+       $:{help_content[i]}
+      </code></pre>
+      <br>
+</div>
+
+
+</div>
+</html>

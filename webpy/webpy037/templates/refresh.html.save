@@ -1,0 +1,26 @@
+$def with (form)
+
+<html>
+<!doctype html>
+<head>
+<meta http-equiv="refresh" content="3">
+</head>
+<body>
+
+<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
+
+<p> Hello </p>
+
+<pre><code>
+test
+
+$:form
+
+test2
+</code></pre>
+
+</div>
+
+	
+</body>
+</html>
